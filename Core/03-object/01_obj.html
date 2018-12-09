@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this对象</title>
+</head>
+<body>
+<script>
+    var a = 10;
+    var objPerson = {
+        sname: "li lei",
+        sage: 20,
+        fun: function () {
+            var a = 30;
+            console.log(`I'm ${this.sname},I'm ${this.sage}`);
+        }
+    }
+    console.log(objPerson.sage);
+    objPerson.sage++;
+    console.log(objPerson.sage);
+    objPerson.fun();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM树</title>
+</head>
+<body>
+<span>Dom树</span>
+<h1>domTree</h1>
+<script>
+    // 当 窗口内容 加载完成后 自动执行函数
+    window.onload = function () {
+        var body = document.body;       // 不需要查找，直接就能找到
+        var html = body.parentNode;
+        console.log(html);                // html
+        // 使用元素节点
+        var childNodes = body.children;// body的所有子节点
+        console.log(childNodes);// 3个
+        var span = body.firstElementChild;
+        console.log(span);
+        var script = body.lastElementChild;
+        console.log(script);
+        var h1 = span.nextElementSibling;
+        //script.previousSibling;
+        //body.childNodes[1]
+        console.log(h1);
+    }
+</script>
+</body>
+</html>

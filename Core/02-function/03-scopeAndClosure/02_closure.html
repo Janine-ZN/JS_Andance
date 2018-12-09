@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<script>
+    /******************************** 不使用闭包时 ********************************/
+    /*function getNum() {
+        var i = 1;
+        console.log(i++);
+    }
+    getNum();   // 1 i=2
+    // i=2 释放
+    getNum();
+    getNum();
+    getNum();*/
+
+/******************* 闭包：既重用变量，又保护变量不被污染的一种机制 ********************************/
+    // 1. 用外层函数保护 变量和内层函数
+    function outer() {  // #外层函数
+        var i = 1;       // #受保护的变量
+        // 2. 外层函数将内层函数对象返回到外部
+        return function () { // #内层函数
+            console.log(i++);
+        }
+    }
+
+    // 3. 调用外层函数，获得内层函数对象，保存在变量中
+    var getNum = outer();
+    // getNum: function(){console.log(i++);}
+    // outer()返回一个函数，这个函数用变量 getNum 接收，最终 getNum 就是 function () {console.log(i++);}。所以，要使用闭包里面的函数就调用这个 getNum 变量
+    getNum();   // 1
+    getNum();   // 2
+    i=1; // 此变量污染不了闭包里的变量
+    getNum();   // 3
+    getNum();   // 4
+
+
+
+</script>
+</body>
+</html>

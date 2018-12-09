@@ -1,0 +1,26 @@
+<!--  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    msg = "我们w 信联系";
+
+    // var arr = msg.match(/(微\s*信)|w\s*x|(wei\s*xin)/i);
+    var arr = msg.match(/(微|w(ei)?)\s*(信|x(in)?)/i);
+    // ["0":key,"index":where]
+    if (arr != null) {
+        console.error(`发现关键词：${arr["0"]}，在${arr["index"]}位置`);
+    }
+    else {
+        console.log("没有关键词：" + msg);
+    }
+
+</script>
+</body>
+</html>

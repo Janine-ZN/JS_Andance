@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>array的类型判断</title>
+</head>
+<body>
+<script>
+    var n = 5, s = "hello", b = true, nu = null, un;
+
+    var obj1 = {"x": 1, "y": 2},
+        obj2 = [1, 2, 3],
+        obj3 = new Date(),
+        obj4 = function () {
+            return 1
+        };
+    //=======================鄙视：判断一个对象是不是数组，共有几种方法？======================//
+    console.log("===========================1===========================");
+    console.log(Array.isArray(obj1));
+    console.log(Array.isArray(obj2));
+    console.log(Array.isArray(obj3));
+    console.log("============================2. 判断妈==========================");
+    console.log(obj1.constructor === Array);
+    console.log(obj2.constructor === Array);
+    console.log(obj3.constructor === Array);
+    console.log("============================3. 判断实例==========================");
+    console.log(obj1 instanceof Array);
+    console.log(obj2 instanceof Array);
+    console.log(obj3 instanceof Array);
+    console.log("============================4. 验DAN 更严格==========================");
+    console.log(Object.prototype.toString().call(obj1) === '[object Array]');
+    console.log(Object.prototype.toString().call(obj2) === '[object Array]');
+    console.log(Object.prototype.toString().call(obj3) === '[object Array]');
+    console.log("============================5. 判断爹==========================");
+    console.log(obj1.__proto__ == Array.prototype);
+    console.log(obj2.__proto__ == Array.prototype);
+    console.log(obj3.__proto__ == Array.prototype);
+    console.log(Array.prototype.isPrototypeOf(obj1));
+    console.log(Array.prototype.isPrototypeOf(obj1));
+    console.log(Array.prototype.isPrototypeOf(obj1));
+
+</script>
+</body>
+</html>

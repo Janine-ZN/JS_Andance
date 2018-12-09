@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>const的作用域</title>
+</head>
+<body>
+<script>
+    // 01-只在当前的代码块中有效
+    {
+        const a = "张三";
+        console.log(a);
+    }
+//    console.log(a); // 报错：Uncaught ReferenceError: a is not defined
+    // 02-作用域不会被提升
+    {
+//        console.log(a);// 报错：Uncaught ReferenceError: a is not defined
+        const a = "李四"
+    }
+
+    // 03-不能重复声明
+    {
+        const a =20;
+//        const a=30; // 报错：Uncaught SyntaxError: Identifier 'a' has already been declared
+        console.log(a);
+    }
+    // 04-声明的常量必须赋值
+    {
+        /*const b; // 报错：Uncaught SyntaxError: Missing initializer in const declaration
+        b = "zhangsan"*/
+        //===============================================================================//
+        const name="李四";
+        /*name = "zhangsan"   // 报错：Uncaught TypeError: Assignment to constant variable.
+        console.log(b);*/
+    }
+    {
+        const obj = {name:"janine"};
+        console.log(obj);
+        obj.name="李四"
+        console.log(obj);
+        // 对象：堆区（存放地址）    // 变量：栈区？？？
+    }
+</script>
+</body>
+</html>

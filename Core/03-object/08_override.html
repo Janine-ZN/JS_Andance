@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重写（重构）</title>
+</head>
+<body>
+<script>
+    var lilei = {
+        sname: "Li Lei",
+        sage: 18,
+        toString() {
+            return `sname:${this.sname},sage:${this.sage}`;
+        }
+    }// __proto__ --> Object.prototype;
+
+    var arr = [1,2,3];
+    console.log(typeof arr.toString());
+
+    console.log(lilei.toString());
+</script>
+</body>
+</html>

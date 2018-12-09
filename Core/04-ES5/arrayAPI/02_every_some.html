@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>every和some</title>
+</head>
+<body>
+<script>
+    var arr1 = [1,2,3,4,5];
+    var arr2 = [5,3,1,7,9];
+    // 判断哪个数组全是奇数
+    console.log(
+        arr1.every(function (elem) {
+            return elem%2 == 1
+        }),     // false
+        arr2.every(function (elem) {
+            return elem%2 == 1
+        })      // true
+    );
+    // 判断哪个数组是升序排序
+    console.log(
+        arr1.every(function (elem,i,arr) {
+            // return elem<=arr[i+1]
+            return i>arr.length-1?elem<=arr[i+1]:true;
+        }),     // false
+        arr2.every(function (elem,i,arr) {
+            // return elem<=arr[i+1]
+            return i>arr.length-1?elem<=arr[i+1]:true;
+        })      // true
+    )
+    // 判断哪个数组包含偶数？
+    console.log(
+        arr1.every(function () {
+            return elem%2==0
+        }),     // true
+        arr2.every(function () {
+            return elem%2==0
+        })      // false
+    )
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax请求</title>
+    <script src="ajax.js"></script>
+</head>
+<body>
+<script>
+    // 异步之间相互之间不等：谁快谁先回（百米赛跑）
+    ajax("http://localhost:1314/liang", "get", res => {
+        console.log(res);
+    })
+    ajax("http://localhost:1314/yaner", "get", res => {
+        console.log(res);
+    })
+    ajax("http://localhost:1314/dong", "get", res => {
+         console.log(res);
+    })
+
+</script>
+</body>
+</html>

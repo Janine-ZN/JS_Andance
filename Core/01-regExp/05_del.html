@@ -1,0 +1,30 @@
+<!--  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>删除空格</title>
+</head>
+<body>
+    <script>
+        var str ="      hello  world      ";
+        function ltrim(){
+            return str.replace(/^\s+/,"");
+        }
+        function rtrim(){
+            return str.replace(/\s+$/,"");
+        }
+        function trim(){
+            return str.replace(/^\s+|\s+$/g,"");
+        }
+
+        console.log(`|${ltrim()}|`,
+                    `|${rtrim()}|`,
+                    `|${trim()}|` );
+
+
+    </script>
+</body>
+</html>

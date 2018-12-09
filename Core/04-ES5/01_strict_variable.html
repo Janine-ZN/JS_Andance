@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>严格模式</title>
+</head>
+<body>
+<script>
+   "use strict";
+    function fun() {
+        var gf;
+        qgf = "晚上吃什么？";     // 加上严格模式报错：Uncaught ReferenceError: qgf is not defined
+        console.log(gf);
+        console.log(qgf);
+    }
+    fun();
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组的扩展</title>
+</head>
+
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+<script>
+    let allLists = document.querySelectorAll('li');
+    console.log(allLists);//伪数组
+    console.log(Array.isArray(allLists)); // false
+
+    // Array.from 转成 真数组
+    console.log(Array.from(allLists));// 真数组
+    console.log(Array.isArray(Array.from(allLists))); // false
+
+    // Array.of
+    console.log(Array.of(1, 2, 3, 4));
+    console.log(Array.of("张三","李四","王五","赵柳"));
+</script>
+</body>
+</html>

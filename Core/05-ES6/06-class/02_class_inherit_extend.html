@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽象函数（抽象父类型）</title>
+</head>
+<body>
+<script>
+    class Enemy{
+        constructor (fname,speed) {
+            this.fname=fname;
+            this.speed=speed;
+        }
+        fly() {
+            console.log(`${this.fname}以时速${this.speed}飞行`);
+        }
+    }
+    class Plane extends Enemy{
+        constructor (fname,speed,score) {
+        super(fname,speed);
+        this.score=score;
+    }
+    getScore() {
+        console.log(`击落${this.fname}得${this.score}分`);
+    }}
+    Object.setPrototypeOf(
+        Plane.prototype,Enemy.prototype
+    )
+    var f16 = new Plane("F16",1000,5);
+    f16.fly();
+</script>
+</body>
+</html>

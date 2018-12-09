@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class-访问器属性</title>
+</head>
+<body>
+
+<script>
+    class Emp{
+        constructor(id,ename,age){
+        this.id =id;
+        this.ename = ename;
+        Object.defineProperty(this,"_age",{
+            writable:true,
+            enumerable :false
+        })
+        this.age=age;
+        Object.seal(this);
+        }
+        // age
+        get age(){return this._age}
+        set age(value){
+            if(value>=18&&value<=65)
+                this._age = value;
+            else
+                throw new Error("年龄必须介于18~65之间")
+        }
+}
+var eric = new Emp(1001,"Janine",-2);
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的扩展</title>
+</head>
+<body>
+<div></div>
+<script>
+    // 对象的扩展
+    // key 和 value 是一样的就写一个就够了
+    let name = "张三";
+    let age = 18;
+    let obj = {
+        name,
+        age
+    };
+    console.log(obj);
+
+    // Object.assign()
+    let obj1 = {name:"janine"};
+    let obj2 = {age:20};
+    let obj3 = {gender:"girl"};
+    let obj4 = {friends:"link12st"};
+    let objs = {};
+    console.log(Object.assign(objs, obj1, obj2, obj3, obj4));;
+
+    // 延展操作符
+    let str ="今天天气很好";
+    let strArr = [...str];
+    let div =document.getElementsByTagName('div')[0];
+    div.innerHTML = strArr;
+    console.log(strArr);
+
+</script>
+</body>
+</html>

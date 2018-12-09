@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<script>
+    // var nAdd;    // 强行给未声明的变量赋值，会自动在全局创建
+
+    // 面试常见的 鄙视 题
+    // 1. 用外层函数保护的变量和内层函数
+    function fun() {
+        var n = 999;    // (1)受保护的变量
+        // 强行给未声明的变量赋值，会自动在全局创建
+        nAdd = function () {
+            n++;    // 1000
+        }
+        return function () {
+            console.log(n);
+        }
+    }
+    var get = fun();
+    // get:function(){console.log(n)}
+    get();  // 999
+    nAdd();
+    get();  // 1000
+
+
+    function fn() {
+        for (var i = 0, arr = []; i < 3; i++) {
+            console.log("janine00:" + i);
+            arr[i] = function () {
+                console.log("janine11:" + i);
+            }
+        }
+        return arr;
+    }
+
+    var funs = fn();
+
+    /*funs:[
+     function () {console.log("janine11:" + i);}
+     function () {console.log("janine11:" + i);}
+     function () {console.log("janine11:" + i);}
+     ]*/
+
+
+     //    funs[0]();//
+     funs[1]();
+     //    funs[2]();//
+
+
+</script>
+</body>
+</html>

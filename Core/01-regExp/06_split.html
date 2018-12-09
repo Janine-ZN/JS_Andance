@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>split分割</title>
+</head>
+<body>
+<script>
+    function split() {
+        var email = "Janine@163.com";
+        var arr = email.split("@");
+        console.log(arr[0], arr[1]);
+    }
+    split();
+
+    function getLi() {
+        var html = `
+
+            <li>82</li>
+            <li>91</li>
+            <li>73</li>
+            <li>66</li>
+
+        `;
+        html = html.replace(/^\s*<li>|<\/li>\s*$/g, "");
+
+        var arr = html.split(/<\/li>\s*<li>/);
+        arr.sort(function (a, b) {
+            return b - a;
+        });
+        console.log(arr);
+    }
+    getLi();
+
+
+    function getUrl() {
+
+        var url = "http://localhost/index.html?channelid=12333&name=xiaoming&age=23&fav=游泳&fav=唱歌";
+        // 1. 用 ? 分割：url 地址和后面的参数
+        var args = url.split('?');
+
+        // 2. 判断Url中是否带有参数，如果没有返回 ""
+        if (args[0] == url) {
+            return "";
+        }
+
+        // 3. 用 & 分割：channelid=12333&name=xiaoming&age=23&fav=游泳&fav=唱歌
+        var arr = args[1].split('&');
+
+        var obj = {};
+        // arr = [channelid=12333,name=xiaoming,age=23,fav=游泳,fav=唱歌]
+        var test = [];
+        for (var i = 0; i < arr.length; i++) {
+            // 4. 用 = 分割：channelid=12333 name=xiaoming age=23 fav=游泳 fav=唱歌
+            var arg = arr[i].split('=');
+            // arg=[channelid,12333]
+            // arg=[name,xiaoming]
+            // arg=[age,23]
+            // arg=[fav,"游泳,唱歌"]
+            // arg=[fav,]
+
+            test[test.length] = arg[0];
+            console.log("你说：", test);
+            obj[arg[0]] = arg[1];
+        }
+        for (var j = 0; j < test.length; j++) {
+            if (test.indexOf(test[i]) == test.lastIndexOf(test[i]) && test.indexOf(test[i]) === -1) {
+                console.log(test[i]);
+            }
+        }
+
+        return obj;
+    }
+    var href = getUrl(); // obj
+    console.log(href);   // xiaoming
+
+
+</script>
+</body>
+</html>

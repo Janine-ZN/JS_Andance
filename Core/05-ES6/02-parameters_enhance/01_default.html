@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>带默认值的形参</title>
+</head>
+<body>
+<script>
+    function indexOf(arr, elem, starti = 0) {
+     // 如果 参数中不给 starti = 0，可以用一个判断语句
+    /* function indexOf(arr, elem, starti /!*= 0*!/) {
+        if(starti===undefined) starti=0;*/
+        for (var i = starti; i < arr.length; i++) {
+            if (elem === arr[i])
+                return i;
+        }
+        return -1;
+    }
+    var arr = [1, 2, 3, 4, 3, 2, 1];
+            //  0  1  2  3  4  5  6
+    console.log(
+        indexOf(arr, 3),     // 2
+        indexOf(arr, 3, 3),   // 4
+        indexOf(arr, 3, 5),   // -1
+        indexOf(arr, 5)      // -1
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+</head>
+<body>
+<script>
+    function Student(sname, sage) {
+        this.sname = sname;
+        this.sage = sage;
+        // 为Student类型的原型对象中添加一个共有的intr函数
+        this.intr = function () {
+            console.log(`I'm ${this.sname},I'm ${this.sage}`);
+        }
+    }//  -->prototype
+    Student.prototype.className = "初一2班";
+    var lilei = new Student("janine", 20);
+    var hmm = new Student("Han meimei", 12);
+    console.log(lilei);
+    console.log(hmm);
+    lilei.intr();
+    hmm.intr();
+    // 通过子对象输出共有属性：一致
+    console.log(lilei.className, hmm.className);
+    //  用原型对象修改共有属性
+    Student.prototype.className = "初二2班";
+    // 再用子对象输出共有属性：一致
+    console.log(lilei.className, hmm.className);
+    lilei.className = "初三2班";   // 某个子对象想修改共有属性
+    // 结果：不一致，仅为lilei添加自有属性className
+    console.log(lilei.className, hmm.className);
+    // 再修改共有属性
+    Student.prototype.className = "高一2班";   // 共有属性
+    // lilei 因为有自有属性className，所以与共有className再无关系
+    console.log(lilei.className, hmm.className);
+</script>
+</body>
+</html>

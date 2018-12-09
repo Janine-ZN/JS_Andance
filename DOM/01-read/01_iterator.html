@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iterator 迭代器</title>
+
+</head>
+<body>
+<span>hello world!</span>
+<ul id="nav">
+    <li>电影</li>
+    <li>
+        <ul>
+            <li>跑男</li>
+            <li>爸爸</li>
+            <li>极限</li>
+        </ul>
+    </li>
+    <li>剧集</li>
+</ul>
+<script>
+    /*** 遍历节点： iterator 通俗点讲 —— 一个个数过去 ***/
+    function getChildren(parent) {
+        var children = parent.children;// 动态集合
+        //  for (var i = 0; i < children.length; i++) {   // 没有脑子的导购员
+        // 1. 先仅遍历直接子节点
+        // len = children.length  提前保存起来
+        for (var i = 0, len = children.length; i < len; i++) {
+            console.log(children[i].nodeName);
+        //  2.对每个直接子节点，调用和父节点完全相同的函数
+            arguments.callee(children[i]);  // 调用自己
+        }
+    }
+    window.onload = function () {
+        getChildren(document.body);
+    }
+</script>
+</body>
+</html>

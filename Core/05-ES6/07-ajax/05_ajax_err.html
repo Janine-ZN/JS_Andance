@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax请求</title>
+    <script src="05_ajax_err.js"></script>
+</head>
+<body>
+<script>
+    ajax("http://localhost:1314/liang", "get", res => {
+        console.log(res);// liang最后一步
+    })
+    .then(function () {
+        return ajax("http://localhost:1314/yaner", "get", res => {
+            console.log(res);// yaner最后一步
+        })
+    })
+    .then(function () {
+        ajax("http://localhost:1314/dong", "get", res => {
+            console.log(res);
+        })
+    }).catch(function (err) {
+        console.error(err);
+    })
+
+
+
+
+</script>
+</body>
+</html>

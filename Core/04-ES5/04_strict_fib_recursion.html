@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>斐波那契</title>
+</head>
+<body>
+<script>
+    "use strict";
+    // 斐波那契数列
+    // f1=1 f2=1 fn=f(n-1)+f(n-2)
+    // 1 1 2 3 5 8 13 21 34 55
+    function fib(n) {
+        if (n < 3) return 1;
+        else {
+            // arguments.callee -> 当前函数本身 -> fib
+             return arguments.callee(n-1)+arguments.callee(n-2);
+            // 解决方案
+            // f1 f2 fn
+            // 1 1 2 i=3
+            // 1 2 3 i=4
+            // 2 3 5 i=5
+            /*var f1 = 1, f2 = 1, fn;
+            for (var i = 3; i <= n; i++) {
+                fn = f1 + f2;
+                f1 = f2;
+                f2 = fn;
+            }
+            return fn;*/
+        }
+    }
+    console.log(fib(100));// Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+    // 问题1：不能再函数内写死函数名——紧耦合
+    // 解决：argument.callee代替写死的函数名
+    // 问题2：递归效率极低——尽量避免使用
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax请求</title>
+    <script src="06_ajax_data.js"></script>
+</head>
+<body>
+<script>
+    Promise.all([
+        ajax("http://localhost:1314/liang", "get", res => {
+            console.log(res);
+        }),
+        ajax("http://localhost:1314/yaner", "get", res => {
+            console.log(res);
+        }),
+        ajax("http://localhost:1314/dong", "get", res => {
+            console.log(res);
+        })
+    ])
+        .then(function () {
+            console.log("比赛结束");
+        })
+        .catch(function (err) {
+            console.error("出错啦！"+err)
+        })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6-解构赋值</title>
+</head>
+<body>
+<script>
+    // 01-基本用法
+    function assign() {
+    // let name = "janine",age=18,gender="女"
+        let [name, age, gender]=["jiane1",20,"男"]
+        console.log(name, age, gender);
+    }
+    assign();
+
+    // 02-对象的解构赋值
+    function objAssign() {
+        let {name, age, gender}= {name:"janine3",age:20,gender:"男"}
+        console.log(name, age, gender);
+    }
+    objAssign()
+
+    // 03-数组的解构和赋值
+    function arrAssign() {
+        var date = [2018, 9, 29];
+        var [y, m, d] = date;
+        console.log(y, m, d);
+        let [arr1,[arr2,arr3,[arr4,arr5]]]=[1,[2,3,[4,5]]]
+        console.log(arr1, arr2, arr3,arr4,arr5)
+        let [a,,,c]=[1,2,3];
+        console.log("a=>",a);
+        console.log("c=>" ,c);// undefined
+    }
+    arrAssign();
+
+    function strAssign() {
+//        var [a,b,c,d,e] = "我是中国人";
+        /*var [a,b,c,d,e] = 12306;    // 报错：Uncaught TypeError: 12306 is not iterable
+        console.log(a,b,c,d,e);*/
+    }
+    strAssign();
+
+    function fun() {
+        //    鄙视：不声明第三个变量交互两数
+        var a = 3, b = 5;
+        [a, b] = [b, a];
+        console.log(a, b);
+    }
+    fun();
+</script>
+</body>
+</html>

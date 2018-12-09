@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>函数提前</title>
+</head>
+<body>
+<script>
+    /* hoist
+     * |
+     * |
+     * |
+     * |
+     * J    var a;  function fun(){……}
+     * */
+    // 声明提前后的，真的的执行顺序
+    function fun() {console.log(1);}
+    function fun() {console.log(2);}
+    fun();
+    fun();
+
+    /*function fun() {console.log(1);}
+    fun();  // 2
+    function fun() {console.log(2);}
+    fun();  // 2*/
+
+    var fun = 100;
+    fun();  // Uncaught TypeError: fun is not a function
+
+    var fn = function () {console.log(1);}
+    fn();   // 1
+    var fn = function () {console.log(1);}
+    fn();   // 2
+</script>
+</body>
+</html>

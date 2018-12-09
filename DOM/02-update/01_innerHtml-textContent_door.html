@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开关门</title>
+    <style>
+        div {
+            float: left;
+            height: 100px;
+            line-height: 100px;
+        }
+
+        #d1, #d3 {
+            background-color: #ccff00;
+        }
+
+        #d2 {
+            cursor: pointer;
+            background-color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+<div id="d1">树形列表</div>
+<div id="d2">&lt;&lt;</div>
+<div id="d3">内容的主体</div>
+<script>
+    window.onload = function () {
+        var d2 = document.getElementById("d2");
+        d2.onclick = function () {
+            var d2 = this;
+            var d1 = document.getElementById("d1");
+            /*if (d2.innerHTML == "&lt;&lt;") {
+                // .textContent
+                d1.style.display = "none";
+                d2.innerHTML = "&gt;&gt;";
+            } else {
+                d1.style.display = "block";
+                d2.innerHTML = "&lt;&lt;";
+            }*/
+            if (d2.textContent == "<<") {
+                // .textContent
+                d1.style.display = "none";
+                d2.innerHTML = "&gt;&gt;";
+            } else {
+                d1.style.display = "block";
+                d2.innerHTML = "&lt;&lt;";
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>克隆一个对象</title>
+</head>
+<body>
+<script>
+    var objPerson = {
+        sname: "li lei",
+        sage: 20,
+        fun () {
+            console.log(`I'm ${this.sname},I'm ${this.sage}`);
+        }
+        /*fun: function () {
+            console.log(`I'm ${this.sname},I'm ${this.sage}`);
+        }*/
+    }
+function clone(obj) {
+        var newObj={};
+        for (var key in obj){
+            // key:"sname","sage","intr"
+            // 以下三种写法哪种正确？
+            newObj[key]=obj[key];// 每遍历原对象中一个属性，就取出原对象中当前属性值，赋值给新对象中同名属性
+            //    ["sname"]
+            //    ["sage"]
+            //    ["fun"]
+            // newObj["key"]=obj["key"]     undefined
+            // newObj.key=obj.key           undefined
+        }
+    return newObj;
+}
+    // =objPerson 和 =clone(lilei)是否等效，差别是什么？
+    var objPerson2=objPerson;
+    var objPerson2 = clone(objPerson);
+    // objPerson2:newObj
+    console.log(objPerson);
+    console.log(objPerson2);
+    console.log(objPerson == objPerson2);    // false
+    // ==比较两个对象时，不比内容，比地址
+</script>
+</body>
+</html>

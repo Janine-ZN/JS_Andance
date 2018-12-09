@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>声明提前</title>
+</head>
+<body>
+<script>
+    // var a;
+    console.log(a); // undefined
+    var a = 5;      //a=5
+    /* hoist
+     * |
+     * |
+     * |
+     * |
+     * J    var a;  function fun(){……}
+     * */
+
+    var b = 10;
+    function fun() {
+        /* hoist
+         * |
+         * |
+         * |
+         * |
+         * J    var b;
+         * */
+        // var b;
+        console.log(b); // undefined
+        var b = 20;     // b=5;
+        console.log(b);
+    }
+    fun();
+    console.log(b);
+
+</script>
+</body>
+</html>

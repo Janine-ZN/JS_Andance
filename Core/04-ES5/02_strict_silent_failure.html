@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静默失败</title>
+</head>
+<body>
+<script>
+    "use strict";
+    function eric() {
+        var eric = {id: 1001, ename: "埃里克"};
+        Object.defineProperty(eric, "id", {
+            writable: false
+        });
+        eric.id = 1002;
+        console.log(eric);      // Uncaught TypeError: Cannot assign to read only property 'id' of object '#<Object>'
+    }
+    // eric();
+</script>
+</body>
+</html>

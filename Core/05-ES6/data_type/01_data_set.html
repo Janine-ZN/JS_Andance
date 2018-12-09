@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据集合set</title>
+</head>
+<body>
+<script>
+    // 01-创建一个集合
+    let set =new Set(["张三","李四","王五"]);
+    console.log(set);
+
+    // 02-一个属性
+    console.log(set.size);
+
+    // 03-四个属性
+    // add
+    // console.log(set.add("janine").add("janine2"));// 链式调用：本质：调用这个方法返回的是对应的对象
+
+    // delete
+   /* console.log(set.delete("张三"));// bool
+    console.log(set)*/;
+
+    // has
+    // console.log(set.has("张三"));// bool
+
+    // clear 将集合中的内容全部清除
+    console.log(set.clear()); // undefined
+    console.log(set);
+
+</script>
+</body>
+</html>

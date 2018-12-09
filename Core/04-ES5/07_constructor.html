@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>保护对象的结构</title>
+</head>
+<body>
+<script>
+    "use strict";
+    function Emp(id, ename, salary, age) {
+        /*this.id = id;
+        this.ename = ename;
+        this.salary = salary;
+        this.age = age;*/
+        // this.id=id; 特性默认值都是true!
+        // 在构造函数中，this -> 正在创建的新对象
+        Object.defineProperties(this,{
+            // 所有特性默认值为false!
+            id:{// id 只读
+                value:id,
+                writable:false,
+                enumerable:true,
+                // configurable:false
+            },
+            ename: {// ename禁止删除
+                value:ename,
+                writable:true,
+                enumerable:true,
+                // configurable:false
+            },
+            salary: { // salary禁止遍历
+                value:salary,
+                writable:true,
+                enumerable:false,
+                // configurable:false
+            },
+            // 先创建一个实际存在的
+            _age: {// _age是隐藏的受保护的数据属性
+//                value:age,
+                writable:true,
+                enumerable:false,
+                // configurable:false
+            }
+            // age:{...}剪切到构造函数外
+         });
+        this.age = age;// age:在作用链上找
+        // 保护对象结构：
+        // Object.preventExtensions(this);
+        Object.seal(this);
+    }
+    // Emp.prototype=age{// 不能这么写}
+    Object.defineProperties(Emp.prototype,"age",{
+        age: {// 访问器属性，提供对_age的保护
+            get(){
+                return this._age
+            },
+            set(value){
+                if (value > 18 && value < 65)
+                    this._age = value;
+                else
+                    throw new Error("年龄必须介于18~65之间")
+            },
+            enumerable:true,
+            configurable:false
+        }
+    });
+
+
+
+//    var eric = new Emp(1001, "埃里克", 12000, 21);
+    var eric = new Emp(1001, "埃里克", 12000, -2);// Uncaught Error: 年龄必须介于18~65之间
+    // eric.id = 1002;
+    // delete eric.ename;
+    /*for (var key in eric){
+        console.log(key + ":" +eric[key]);
+    }*/
+    // eric.age=-2;
+    console.log(eric);
+</script>
+</body>
+</html>

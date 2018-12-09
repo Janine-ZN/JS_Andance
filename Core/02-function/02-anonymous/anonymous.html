@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>匿名函数的自调用</title>
+</head>
+<body>
+<!--<script>
+    &lt;!&ndash; 执行开始时间 &ndash;&gt;
+    var start = new Date();
+    alert(`执行开始时间：${start}`);
+</script>
+
+<h1>全局变量有可能无法释放</h1>
+
+<script>
+    &lt;!&ndash; 执行结束时间 &ndash;&gt;
+    var end = new Date();
+        alert(`执行结束时间：${end}`);
+</script>-->
+
+//测试: F12->console: 输入start回车，看start是否遗留在内存，再输入end回车，看end是否遗留在内存
+
+<script>
+    <!-- 执行开始时间 -->
+    (function () {
+        var start = new Date();
+        alert(`执行开始时间：${start}`);
+    })();
+
+</script>
+
+<h1>全局变量有可能无法释放；匿名函数可以节省内存，随时回收，而且只执行一次</h1>
+
+<script>
+    <!-- 执行结束时间 -->
+    (function () {
+        var end = new Date();
+        alert(`执行结束时间：${end}`);
+    })();
+</script>
+
+</body>
+</html>

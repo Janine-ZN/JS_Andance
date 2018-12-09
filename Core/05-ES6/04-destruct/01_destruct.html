@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解构</title>
+</head>
+<body>
+<script>
+var date = [2018,9,29];
+var [y,m,d]=date;
+console.log(y, m, d);
+
+var time ={year:2018,month:9,date:29};
+var {year,month,date}=time;
+console.log(year, month, date);
+
+function ajax(url,type,data,dataType) {
+    console.log("向"+ url +"发送"+type+"请求");
+    if(data !==undefined)
+        console.log("携带参数:"+data);
+    if(dataType == "json")
+        console.log("返回json字符串")
+}
+ajax(
+    "http://localhost:3000/users/signin",
+    "post",
+    "json",
+    "uname=dingding&upwd=123456"
+);
+ajax(
+    "http://localhost:3000/users/islogin",
+    "get",
+    "json",
+    /*不带参数*/
+);
+ajax(
+    "http://localhost:3000/users/signup",
+    "post",
+    /*不带参数*/
+    "uname=dingding&upwd=123456"
+);
+
+
+</script>
+</body>
+</html>

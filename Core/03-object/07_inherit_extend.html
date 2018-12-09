@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽象函数（抽象父类型）</title>
+</head>
+<body>
+<script>
+    function Enemy(fname,speed) {
+        this.fname=fname;
+        this.speed=speed;
+    }
+    Enemy.prototype.fly=function () {
+        console.log(`${this.fname}以时速${this.speed}飞行`);
+    }
+    function Plane(fname,speed,score) {
+        // this -> new -> f16
+        // Enemy(fname,speed);
+        Enemy.call(this,fname,speed);
+        // Enemy的this->window
+        // this.fname = fname
+        // this.speed = speed
+        /*this.fname=fname;
+        this.score=score;*/
+        this.score=score;
+    }
+    Plane.prototype.getScore=function () {
+        console.log(`击落${this.fname}得${this.score}分`);
+    }
+    Object.setPrototypeOf(
+        Plane.prototype,Enemy.prototype
+    )
+    var f16 = new Plane("F16",1000,5);
+    f16.fly();
+</script>
+</body>
+</html>

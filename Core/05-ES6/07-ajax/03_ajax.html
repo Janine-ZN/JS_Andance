@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax请求</title>
+    <script src="ajax.js"></script>
+</head>
+<body>
+<script>
+    new Promise(function (open) {
+        ajax("http://localhost:1314/liang", "get", res => {
+            console.log(res);// liang最后一步
+            open();// 打开开关
+        })
+    }).then(function () {
+        return new Promise(function (open) {
+            ajax("http://localhost:1314/yaner", "get", res => {
+                console.log(res);// yaner最后一步
+                open();// 打开开关
+            })
+        })
+    }).then(function () {
+        ajax("http://localhost:1314/dong", "get", res => {
+            console.log(res);
+        })
+    })
+
+
+
+
+</script>
+</body>
+</html>

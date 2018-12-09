@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS基础-windowOnload-讲解</title>
+    <style type="text/css">
+        #box{
+            width:100px;
+            height: 100px;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" name="btn" id="btn" value="按钮" />
+    <div id="box"></div>
+    <script>
+        /*
+         * 1. 页面中的代码在一般情况下会按从上到下的顺序，从左往右的顺序执行
+         *
+         * 2. 当代码走到alert(document.getElementById('btn'));的时候，它会去页面中找一个id为btn的元素，
+         *    但是代码走到这一行的时候，以下的代码是没有加载的，所以它找不到，这样的话就会报错
+         *
+         * 3. 解决
+         *      window.onload   页面加载完成
+         *      window.onload=function(){
+         * 	        // 当页面中的元素全部加载完成后执行这里的代码
+         *      }
+         *
+         * 4. window.onload什么时候用？
+         *    4.1 当js代码需要获取页面中的元素的时候，如果中script放在元素的前面，那就需要加window.onload
+         *    4.2 如果script是放在了元素后面，那就不需要加window.onload
+         *
+         */
+        window.onload = function() {
+            alert(document.getElementById('btn'));
+            document.getElementById("btn").onclick = function() {
+                document.getElementById("box").style.width = "200px";
+                document.getElementById("box").style.height = "200px";
+            }
+        }
+    </script>
+</body>
+</html>

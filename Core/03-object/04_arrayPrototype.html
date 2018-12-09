@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+<body>
+<script>
+    Array.prototype.sum = function () {
+
+        // this指向.前
+        var arr = this;
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+
+    var arr1 = [1, 2, 3];
+    var arr2 = [1, 2, 3, 4, 5];
+    console.log(
+        // this指向调用时
+        arr1.sum(), // 6
+        arr2.sum()  // 15
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据属性</title>
+</head>
+<body>
+<script>
+    "use strict";
+    var eric = {id: 1001, ename: "埃里克", salary: 12000};
+    // 获取自己的属性描述
+    var id_attrs = Object.getOwnPropertyDescriptor(eric, "id");
+    console.log(id_attrs);
+    Object.defineProperties(eric,{
+       id:{
+           writable:false,
+           configurable: false
+       },
+       ename:{
+           configurable: false     // 不能改 salary
+       },
+       salary:{
+           enumerable:false,       // 不能遍历到 salary
+           configurable: false     // 不能改 salary
+       }
+    })
+
+    // 1. id 属性只读
+    // defineProperty：定义属性
+   /*Object.defineProperty(eric, "id", {  // "use strict"; Uncaught TypeError: Cannot assign to read only property 'id' of object '#<Object>'
+        writable: false,        // 不可修改
+        configurable: false     // 不能改writable
+    });*/
+    /*Object.defineProperty(eric, "id", {     // Uncaught TypeError: Cannot redefine property: id
+     writable: true,
+     configurable: true
+     });*/
+//     eric.id = 1002;
+
+    // 2. ename属性禁止删除
+    /*Object.defineProperty(eric, "ename", {
+        configurable: false     // 不能删除ename
+    });
+    delete eric.ename;// Uncaught TypeError: Cannot delete property 'ename' of #<Object>*/
+
+   // 3. salary属性禁止遍历
+    Object.defineProperty(eric, "salary", {
+        enumerable:false,       // 不能遍历到 salary
+        configurable: false     // 不能改 salary
+    });
+    for (var key in eric){
+        console.log(key + "" + eric[key]);
+    }
+
+
+    console.log(eric);
+
+
+</script>
+</body>
+</html>

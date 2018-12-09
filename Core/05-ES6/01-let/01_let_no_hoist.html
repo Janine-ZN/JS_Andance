@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let-解决var声明提升的问题</title>
+</head>
+<body>
+<script>
+    // let 的 原理 ：匿名函数自调
+    function varAndLet() {
+        console.log(a);// Uncaught ReferenceError: a is not defined
+        // ********** let相当于匿名函数自调 *************
+        // (function(){
+        let a = 10;
+        console.log(a);
+        // })()
+    }
+    varAndLet();
+
+    // 使用let声明的 变量作用域 不会被 提升
+    {
+        console.log(str);// undefined
+        var str = "张三";
+    }
+    //      ↓↓↓↓
+    // 变量提升，赋值留在原地
+    {
+        var str;
+        console.log(str);
+        str = "张三";
+    }
+    //    ↓↓↓ let会报错 ↓↓↓
+    {
+        console.log(str);   // 报错：Uncaught ReferenceError: str is not defined
+        let str = "李四";
+    }
+
+
+    // var t = 0
+    let t = 0;
+    function conn() {
+        t += 0.3;
+        console.log("建立连接耗时 0.3s",t);// 0.3
+    }
+    function query() {
+        // var t;
+        t += 0.8;
+        console.log("建立连接耗时 0.8s",t);// 1.1
+        var err = false;
+        if (err) {
+            //(function(){}
+            // var t = new Date();              // var t 会被提前
+            let t = new Date();
+            console.log("出错啦，at:" + t.toLocaleDateString());
+            //})(）
+        }
+    }
+    conn();
+    query();
+    console.log("总耗时：" + t); // 1.1
+    console.log("================================================================");
+
+</script>
+</body>
+</html>

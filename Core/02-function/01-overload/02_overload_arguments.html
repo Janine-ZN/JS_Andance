@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重载-使用arguments</title>
+</head>
+<body>
+<script>
+    // 实现任意个数的加法
+    function add() {
+        var sum = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+    console.log(add(1, 2, 5, 10, 89));
+</script>
+</body>
+</html>

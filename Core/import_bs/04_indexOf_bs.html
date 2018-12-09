@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组的indexOf</title>
+</head>
+<body>
+<script>
+    // indexOf 是 ES5 的函数 ，浏览器如果不兼容
+    Array.prototype.indexOf=function () {
+        console.log("调用自定义的indexOf");
+        // this --> 将来的 arr
+        if (starti === undefined) starti =0
+        for (var i=starti;i<arr.length;i++){
+            if(elem === arr[i])
+                return i
+        }
+        return -1;
+    }
+
+    var arr = [1, 2, 3, 4, 3, 2, 1];
+    console.log(
+        arr.indexOf(3),     //2
+        arr.indexOf(3, 3),  //-1
+        arr.indexOf(3, 5),  //4
+        arr.indexOf(5),     // -1
+    )
+</script>
+</body>
+</html>

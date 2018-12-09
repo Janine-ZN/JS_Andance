@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>冻结</title>
+</head>
+<body>
+<script>
+  "use strict";
+  var dbconfig = {
+      ip:"127.0.0.1",
+      port:3306,
+      db:"xz",
+      uname:"root",
+      upwd:""
+  }
+  Object.freeze(dbconfig);
+  dbconfig.db="taobao"; // Uncaught TypeError: Cannot assign to read only property 'db' of object '#<Object>'
+</script>
+
+</body>
+</html>

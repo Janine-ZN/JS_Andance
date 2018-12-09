@@ -1,0 +1,31 @@
+<!--  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // var str="老师：请用小红、我的、朋友造句。小亮：小红是我的朋友。小明：朋友，小红是我的";
+    var str = "明明很喜欢我，却不告诉我。别理我，我想静静。静静是谁？你先告诉我明明是谁？";
+    var arr = str.match(/小[\u4e00-\u9fa5]/ig);
+    str = str.replace(/小[\u4e00-\u9fa5]/ig, "**");
+    // ["0":key,"index":where]
+
+    console.log(`共替换${arr != null ? arr.length : 0}处`);
+
+
+    var msg = "you can you up";
+    // 鄙视：将每个单词的首字母改为大写
+    msg = msg.replace(/\b[a-z]/ig, function (keyword) {
+        return keyword.toUpperCase();
+    });
+    console.log(msg);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问器属性</title>
+</head>
+<body>
+<script>
+    var eric = {id: 1001, name: "janine", _age: 10};
+    Object.defineProperties(eric, {
+        _age: {enumerable: false, configurable: false},
+        age: {
+            get() {  // 当试图取age的值时，实际自动调用get()
+                console.log("自动调用age的get()");
+                return this._age;
+            },
+            set(value) {    // 当试图修改age的值时，自动调用set()
+                console.log("自动调用age的set()");
+                if (value > 18 && value < 65)
+                    this._age = value;
+                else
+                    throw new Error("年龄必须介于18~65之间")
+            },
+            enumerable: true,
+            configurable: false
+        }
+    });
+    console.log(eric.age);// 自动调用get()
+    eric.age=22;// 自动调用set(),验证通过并赋值
+    console.log(eric);
+    eric.age=15;// 自动调用set()，验证不通过，报错！
+    // 控制台中，输出eric
+</script>
+</body>
+</html>

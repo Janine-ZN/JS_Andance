@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义原型对象</title>
+</head>
+<body>
+<script>
+    function Student(sname, sage) {
+        this.sname = sname;
+        this.sage = sage;
+        // 为Student类型的原型对象中添加一个共有的intr函数
+        this.intr = function () {
+            console.log(`I'm ${this.sname},I'm ${this.sage}`);
+        }
+    }//  -->prototype
+    Student.prototype.className = "初一2班";
+    var lilei = new Student("janine", 20);
+    var hmm = new Student("Han meimei", 12);
+
+    var father = {
+        bal: 100000000,
+        car: "infiniti"
+    }
+
+    function Student(sname, sage) {
+        this.sname = sname;
+        this.sage = sage;
+    }
+    // __proto__ 存在兼容性问题
+    // hmm.__proto__=father;
+    Object.setPrototypeOf(hmm,father);  // 修改原型对象
+    console.log(hmm.bal, hmm.car);
+    console.log(lilei.bal, lilei.car);  // undefined undefined
+    console.log(hmm);
+    console.log(lilei);
+
+    console.log("=============================================");
+    Student.prototype=father;       // 改嫁
+    Student.prototype.intr=function () {
+        console.log(`I'm ${this.sname},I'm ${this.sage}`);
+    }
+
+    var lilei = new Student("janine", 20);
+    var hmm = new Student("Han meimei", 12);
+
+    console.log(lilei);
+    console.log(hmm);
+    lilei.intr();
+    hmm.intr();
+
+
+
+    // hmm.__proto__=father;
+    Object.setPrototypeOf(hmm, father);
+    console.log(hmm.bal, hmm.car);
+    console.log(lilei.bal, lilei.car);
+    console.log(hmm);
+    console.log(lilei);
+
+</script>
+
+</body>
+</html>

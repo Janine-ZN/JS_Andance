@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for循环形成 块级作用域</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+<script>
+    // let 和 const 声明 变量和常量 var
+
+    // 04-for循环体现let的父子作用域
+    function noClosure() {
+        var btns = document.querySelectorAll("button");
+        for(var i=0;i<btns.length;i++){
+            btns[i].onclick=function () {
+                alert("点击了第"+i+ "个按钮"); // 一直输出 5
+                // 原因：for循环是一个同步事件，但是事件的触发是一个异步事件
+            }
+        }
+    }
+//    noClosure();// 正常情况下
+
+    function haveClosure() {
+        var btns = document.querySelectorAll("button");
+        for(var i=0;i<btns.length;i++){
+            (function (i) {
+                btns[i].onclick=function () {
+                    alert("点击了第"+i+ "个按钮"); // 一直输出 5
+                    // 原因：for循环是一个同步事件，但是事件的触发是一个异步事件
+                }
+            })(i);
+        }
+    }
+//    haveClosure();// 调用闭包函数
+
+    function letForScope() {
+        let btns = document.querySelectorAll("button");
+        for(let i=0;i<btns.length;i++){
+            btns[i].onclick=function () {
+                alert("点击了第"+i+ "个按钮"); // 一直输出 5
+                // 原因：for循环是一个同步事件，但是事件的触发是一个异步事件
+            }
+        }
+    }
+//    letForScope();
+
+    function letFor() {
+        for(let i=0;i<6;i++){// 循环中的变量不会影响，循环内定义的变量
+            let i = 20;
+            console.log(i); // 输出 5 个 20
+        }
+    }
+    letFor();
+
+
+    /*
+    var fun = [];
+    for (let i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
+        (function (i) {// 外层函数，保护 i
+            fun[i] = function () {// 内层函数
+                console.log(i);
+            }
+        })(i);
+    }
+
+    fun[0]();
+    fun[1]();
+    fun[2]();*/
+
+</script>
+</body>
+</html>

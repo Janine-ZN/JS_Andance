@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this对象</title>
+</head>
+<body>
+<script>
+    var a = 10;
+    var obj ={
+        a:20,
+        fun:function () {
+            var a = 30;
+            console.log(this.a);
+            // return a;
+        }
+    }
+    //console.log(fun()); // return a=30 (跟this无关)
+    // 1. 调用了 obj 的 fun 成员方法：function () {var a = 30;console.log(this.a);}
+    obj.fun();      // 20 this->obj
+
+    // 2. 将 obj 的fun 成员方法 "fun : function () {var a = 30;console.log(this.a);}"  赋给了 fn
+    var fn = obj.fun;
+    // 此时在调用fn()时，就相当于window调用了一个 function () {var a = 30;console.log(this.a);}
+    // 因为如果一个函数不用.调用，则this->window
+    fn();          // ? 10 this->window
+
+    // 3. 与 2 的解释相似，此处将 obj.fun 改成 fn 更容易理解
+    setTimeout(obj.fun,100);            // 10
+    // ===> setTimeout(fn,100);         // 10
+    // obj.fun ===> function(){var a = 30;console.log(this.a);}
+
+    // 4. 与 1 的解释相似，调用 function(){var a = 30;console.log(this.a);}
+    setTimeout(obj.fun(),100);          // 20
+    setTimeout(obj.fun.bind(obj),100);  // 20
+    // function(){var a = 30;console.log(this.a);}  this->obj
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+<script>
+    var a = 10;
+
+    function fun() {    // 函数作用域
+        var a = 100;    // 局部变量：执行结果 101
+        // a = 100;        // 全局变量：执行结果 101
+        a++;
+        console.log(a); // 101
+    }
+    fun();
+    console.log(a);     // 加 var ：10 （此处的 a 为局部变量）|| 不加var ：101（此处的 a 为全局变量）
+
+    for (var i = 1, sum = 0; i <= 100; i++) {   // 块，不是作用域
+        sum += i;
+    }
+    console.log(sum);// 5050
+
+</script>
+</body>
+</html>
